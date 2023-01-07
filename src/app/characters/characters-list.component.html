@@ -1,0 +1,12 @@
+<ng-container *ngIf="characters$ | async as characters; else loading">
+  <app-characters-list-item
+    class="items"
+    *ngFor="let character of characters"
+    [character]="character">
+  </app-characters-list-item>
+  <app-characters-pagination (fetch)="loadCharacters($event)"></app-characters-pagination>
+</ng-container>
+
+<ng-template #loading>
+  <span class="loading">loading...</span>
+</ng-template>

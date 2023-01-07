@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {Character} from "../../models/character.model";
 
 @Component({
   selector: 'app-characters-list-item',
@@ -8,5 +9,5 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CharactersListItemComponent {
-
+  @Input() character!: Character;
 }

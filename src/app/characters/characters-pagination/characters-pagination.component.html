@@ -1,0 +1,22 @@
+<ng-container *ngIf="pagination$ | async as pagination">
+  <button
+    [disabled]="!pagination.first.length"
+    (click)="fetchFrom(pagination.first)">
+    First
+  </button>
+  <button
+    [disabled]="!pagination.prev.length"
+    (click)="fetchFrom(pagination.prev)">
+    Previous
+  </button>
+  <button
+    [disabled]="!pagination.next.length"
+    (click)="fetchFrom(pagination.next)">
+    Next
+  </button>
+  <button
+    [disabled]="!pagination.last.length"
+    (click)="fetchFrom(pagination.last)">
+    Last
+  </button>
+</ng-container>
