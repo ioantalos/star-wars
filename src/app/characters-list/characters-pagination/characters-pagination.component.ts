@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {select, Store} from "@ngrx/store";
-import * as CharacterSelector from "../state/character.selectors";
+import * as CharacterSelector from "../state/characters.selectors";
 import {AppState} from "../../store";
 import {Observable} from "rxjs";
 import {Pagination} from "../../models/character.model";

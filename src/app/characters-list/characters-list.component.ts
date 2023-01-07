@@ -1,8 +1,8 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {AppState} from "../store";
 import {select, Store} from "@ngrx/store";
-import * as fromProductActions from './state/character.actions';
-import * as CharacterSelector from './state/character.selectors';
+import * as fromProductActions from './state/characters.actions';
+import * as CharacterSelector from './state/characters.selectors';
 import {environment} from "../../environments/environment";
 import {Observable} from "rxjs";
 import {CommonModule} from "@angular/common";

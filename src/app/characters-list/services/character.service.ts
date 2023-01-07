@@ -15,8 +15,6 @@ export class CharacterService {
     private paginationService: PaginationService
   ) {}
 
-  baseUrl: string = 'https://www.swapi.tech/api/people';
-
   getCharacters(url: string): Observable<PaginatedResult<Character[]>> {
     return this.http
       .get<CharactersApiResponseBody>(url, { observe: 'response' })

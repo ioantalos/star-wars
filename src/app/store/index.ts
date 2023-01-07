@@ -6,7 +6,7 @@ import {
   MetaReducer
 } from '@ngrx/store';
 import * as fromRouter from '@ngrx/router-store';
-import * as fromCharacter from '../characters/state/character.reducer';
+import * as fromCharacter from '../characters-list/state/characters.reducer';
 
 export interface AppState {
   router: fromRouter.RouterReducerState;

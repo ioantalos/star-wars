@@ -1,23 +1,23 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import * as CharacterActions from './character.actions';
+import * as CharactersActions from './characters.actions';
 import { mergeMap, map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import {Character, PaginatedResult} from "../../models/character.model";
 import {CharacterService} from "../services/character.service";
 
 @Injectable()
-export class CharacterEffects {
+export class CharactersEffects {
   loadCharacters$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(CharacterActions.loadCharacters),
+      ofType(CharactersActions.loadCharacters),
       mergeMap((action: {url: string}) =>
         this.characterService.getCharacters(action.url).pipe(
           map((data: PaginatedResult<Character[]>) =>
-            CharacterActions.loadCharactersSuccess({ paginatedResult: data })
+            CharactersActions.loadCharactersSuccess({ paginatedResult: data })
           ),
           catchError((error) =>
-            of(CharacterActions.loadCharactersFailure({ error }))
+            of(CharactersActions.loadCharactersFailure({ error }))
           )
         )
       )

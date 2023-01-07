@@ -1,6 +1,6 @@
 import {createReducer, on} from '@ngrx/store';
 import {EntityState, EntityAdapter, createEntityAdapter} from '@ngrx/entity';
-import * as CharacterActions from './character.actions';
+import * as CharactersActions from './characters.actions';
 import {Character, Pagination} from "../../models/character.model";
 
 export const charactersFeatureKey = 'characters';
@@ -21,14 +21,14 @@ export const initialState: State = adapter.getInitialState({
 
 export const reducer = createReducer(
   initialState,
-  on(CharacterActions.loadCharactersSuccess, (state, action) =>{
+  on(CharactersActions.loadCharactersSuccess, (state, action) =>{
     return adapter.setAll(action.paginatedResult.result, {
       ...state,
       pagination: action.paginatedResult.pagination,
     })}
   ),
   on(
-    CharacterActions.loadCharactersFailure,
+    CharactersActions.loadCharactersFailure,
     (state, action) => {
       return {
         ...state,
@@ -39,10 +39,7 @@ export const reducer = createReducer(
 );
 
 export const {
-  selectIds,
-  selectEntities,
   selectAll,
-  selectTotal,
 } = adapter.getSelectors();
 
 export function selectCharacterId(character: Character): string {
