@@ -1,3 +1,28 @@
+:host {
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0.25rem 0.25rem 0.75rem rgb(0 0 0 / 0.1);
+  cursor: pointer;
+  background: lightgrey;
+  margin-right: 1rem;
+  margin-left: -1rem;
+
+  &.even {
+    background: grey;
+    margin-right: -1rem;
+    margin-left: 1rem;
+  }
+
+  &:hover {
+    box-shadow: 0 5px 15px rgba(240, 240, 240, .4);
+    transition-duration: 0.2s;
+  }
+}
+
 a {
   font-size: 1.1rem;
+  text-decoration: inherit;
+  cursor: inherit;
+  color: inherit;
 }
