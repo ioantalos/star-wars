@@ -16,7 +16,7 @@ import {NavigationEnd, Router, RouterEvent, RouterModule} from "@angular/router"
 export class HeaderComponent implements OnInit {
   previousRoute = '';
   lastCharactersListRoute = '/characters';
-  private currentRoute = '';
+  currentRoute = '';
 
   constructor(
     private store: Store<AppState>,

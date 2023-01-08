@@ -11,7 +11,7 @@
 
     <button
       routerLink="{{lastCharactersListRoute}}"
-      [disabled]="!lastCharactersListRoute.length"
+      [disabled]="!lastCharactersListRoute.length || currentRoute.indexOf('/characters') > -1"
     >
       Home page
     </button>

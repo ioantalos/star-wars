@@ -1,6 +1,6 @@
 <ng-container *ngIf="pagination$ | async as pagination">
   <button
-    [disabled]="!pagination.first.length"
+    [disabled]="!pagination.first.length || pagination.first === pagination.current"
     (click)="setCharactersPage(pagination.first)">
     First
   </button>
@@ -16,7 +16,7 @@
     Next
   </button>
   <button
-    [disabled]="!pagination.last.length"
+    [disabled]="!pagination.last.length || pagination.last === pagination.current"
     (click)="setCharactersPage(pagination.last)">
     Last
   </button>
