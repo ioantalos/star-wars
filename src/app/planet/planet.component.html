@@ -1,0 +1,35 @@
+<ng-container *ngIf="planet$ | async as planet">
+  <app-star-wars-entity
+    *ngIf="planet.properties"
+    class="star-wars-container"
+  >
+    <ng-container header>
+      <h1>{{planet.properties.name}}</h1>
+      <hr>
+      <h3>{{planet.description}}.</h3>
+    </ng-container>
+
+    <ng-container content>
+      <div class="planet-box-properties-container">
+        <span>Climate: {{planet.properties.climate}}</span>
+        <span>Terrain: {{planet.properties.terrain}}</span>
+        <span>Gravity: {{planet.properties.gravity}}</span>
+      </div>
+
+      <div class="planet-box-properties-container">
+        <span>Diameter: {{planet.properties.diameter}}</span>
+        <span>Surface water: {{planet.properties.surface_water}}</span>
+        <span>Rotation period: {{planet.properties.rotation_period}}</span>
+        <span>Orbital period: {{planet.properties.orbital_period}}</span>
+      </div>
+
+      <div class="planet-box-properties-container">
+        <span>Population: {{planet.properties.population}}</span>
+        <span>Created: {{planet.properties.created | date}}</span>
+        <span>Edited: {{planet.properties.edited | date}}</span>
+      </div>
+    </ng-container>
+
+  </app-star-wars-entity>
+</ng-container>
+

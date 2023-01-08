@@ -1,0 +1,40 @@
+@import "variables";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--body-bg-color);
+}
+
+button {
+  border: .1rem solid grey;
+  padding: .3rem;
+  cursor: pointer;
+  background-color: var(--container-bg-color);;
+  color: black;
+  border: 0;
+
+  &[disabled] {
+    background-color: grey;
+    color:darkgray;
+    cursor: not-allowed;
+  }
+}
+
+.star-wars-container {
+  width: 60%;
+
+  @media screen and (max-width: 900px) {
+    width: 80%;
+  }
+
+  @media screen and (max-width: 650px) {
+    width: 90%;
+  }
+
+  @media screen and (min-width: 2000px) {
+    width: 1200px;
+  }
+}

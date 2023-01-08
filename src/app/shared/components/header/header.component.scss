@@ -1,0 +1,21 @@
+.header {
+  display: grid;
+  place-items: center;
+  background-color: var(--header-bg-color);
+  width: 100%;
+  color: var(--header-text-color);
+  margin-bottom: .5rem;
+  padding: 1rem 0;
+
+  h1 {
+    color: var(--header-h1-color);
+    padding: 0;
+    margin: 0;
+  }
+
+  &-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

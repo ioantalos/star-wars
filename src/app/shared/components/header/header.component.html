@@ -1,0 +1,19 @@
+<div class="header">
+  <div class="star-wars-container header-content">
+    <button
+      routerLink="{{previousRoute}}"
+      [disabled]="!previousRoute.length"
+    >
+      Previous page
+    </button>
+
+    <h1>The Star Wars App</h1>
+
+    <button
+      routerLink="{{lastCharactersListRoute}}"
+      [disabled]="!lastCharactersListRoute.length || currentRoute.indexOf('/characters') > -1"
+    >
+      Home page
+    </button>
+  </div>
+</div>

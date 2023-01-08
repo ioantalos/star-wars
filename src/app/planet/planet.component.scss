@@ -1,0 +1,22 @@
+:host {
+  display: grid;
+  place-items: center;
+  color: var(--container-text-color);
+}
+
+.planet-box-properties-container {
+  display: flex;
+  flex-direction: column;
+
+  span {
+    margin-bottom: .1rem;
+  }
+
+  &:nth-child(2) {
+    align-items: center;
+  }
+
+  &:nth-last-child(1) {
+    align-items: end;
+  }
+}

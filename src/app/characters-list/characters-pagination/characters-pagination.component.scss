@@ -1,0 +1,10 @@
+:host {
+  display: flex;
+  justify-content: space-between;
+}
+
+.current {
+  color: var(--header-text-color);
+  font-size: 1.4rem;
+}
+

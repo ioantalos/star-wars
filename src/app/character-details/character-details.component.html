@@ -1,0 +1,38 @@
+<ng-container *ngIf="characterDetails$ | async as characterDetails">
+  <app-star-wars-entity
+    *ngIf="characterDetails.properties"
+    class="star-wars-container"
+  >
+    <ng-container header>
+      <h1>{{characterDetails.properties.name}}</h1>
+      <hr>
+      <h3>{{characterDetails.description}}.</h3>
+    </ng-container>
+
+    <ng-container content>
+      <div class="character-details-box-properties-container">
+        <span>Gender: {{characterDetails.properties.gender}}</span>
+        <span>Height: {{characterDetails.properties.height}} cm</span>
+        <span>Birth year: {{characterDetails.properties.birth_year}}</span>
+      </div>
+
+      <div class="character-details-box-properties-container">
+        <span>Mass: {{characterDetails.properties.mass}} kg</span>
+        <span>Skin color: {{characterDetails.properties.skin_color}}</span>
+        <span>Hair color: {{characterDetails.properties.hair_color}}</span>
+        <span>Eye color: {{characterDetails.properties.eye_color}}</span>
+      </div>
+
+      <div class="character-details-box-properties-container">
+        <span>Created: {{characterDetails.properties.created | date}}</span>
+        <span>Edited: {{characterDetails.properties.edited | date}}</span>
+        <span>Home world:
+          <a [routerLink]="['/planet', characterDetails.properties.homeworld | planet]">
+            Planet {{characterDetails.properties.homeworld | planet}}
+          </a>
+        </span>
+      </div>
+    </ng-container>
+
+  </app-star-wars-entity>
+</ng-container>
