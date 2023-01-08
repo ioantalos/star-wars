@@ -8,6 +8,7 @@ import {CommonModule} from "@angular/common";
 import {Character} from "./models/character.model";
 import {CharactersListItemComponent} from "./characters-list-item/characters-list-item.component";
 import {CharactersPaginationComponent} from "./characters-pagination/characters-pagination.component";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-characters-list',
@@ -27,18 +28,28 @@ export class CharactersListComponent implements OnInit{
 
   constructor(
     private store: Store<AppState>,
+    private route: ActivatedRoute,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
     this.characters$ = this.store.pipe(select(CharacterSelector.selectCharacters));
-    this.loadCharacters();
+
+    this.route.params
+      .subscribe(params => {
+        this.loadCharacters(params['page']);
+      })
   }
 
-  loadCharacters(url?: string): void {
+  loadCharacters(page?: string): void {
     this.store.dispatch(
       fromCharactersActions.loadCharacters({
-        url,
+        page
       })
     );
+  }
+
+  setPage(page: string): void {
+    this.router.navigate(['characters', page]);
   }
 }

@@ -1,4 +1,4 @@
-export const CharactersApiSuffix = '/people';
+export const CharactersApiSuffix = 'people/';
 
 export interface CharactersApiResponseBody {
   results: Character[],
@@ -17,9 +17,10 @@ export interface Character {
 
 export interface Pagination {
   first: string;
+  prev: string;
+  current: string;
   next: string;
   last: string;
-  prev: string;
 }
 
 export interface PaginatedResult<T> {

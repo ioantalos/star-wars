@@ -15,7 +15,7 @@ import {Pagination} from "../models/character.model";
   imports: [CommonModule],
 })
 export class CharactersPaginationComponent implements OnInit{
-  @Output() fetch: EventEmitter<string> = new EventEmitter<string>();
+  @Output() setPage: EventEmitter<string> = new EventEmitter<string>();
 
   pagination$!: Observable<Pagination | null>;
 
@@ -27,7 +27,7 @@ export class CharactersPaginationComponent implements OnInit{
     this.pagination$ = this.store.pipe(select(CharacterSelector.selectPagination));
   }
 
-  fetchFrom(url: string): void {
-    this.fetch.emit(url);
+  setCharactersPage(page: string): void {
+    this.setPage.emit(page);
   }
 }

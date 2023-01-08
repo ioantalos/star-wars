@@ -1,22 +1,23 @@
 <ng-container *ngIf="pagination$ | async as pagination">
   <button
     [disabled]="!pagination.first.length"
-    (click)="fetchFrom(pagination.first)">
+    (click)="setCharactersPage(pagination.first)">
     First
   </button>
   <button
     [disabled]="!pagination.prev.length"
-    (click)="fetchFrom(pagination.prev)">
+    (click)="setCharactersPage(pagination.prev)">
     Previous
   </button>
+  <span class="current">{{pagination.current}}</span>
   <button
     [disabled]="!pagination.next.length"
-    (click)="fetchFrom(pagination.next)">
+    (click)="setCharactersPage(pagination.next)">
     Next
   </button>
   <button
     [disabled]="!pagination.last.length"
-    (click)="fetchFrom(pagination.last)">
+    (click)="setCharactersPage(pagination.last)">
     Last
   </button>
 </ng-container>

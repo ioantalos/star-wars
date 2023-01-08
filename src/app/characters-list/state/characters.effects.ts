@@ -11,15 +11,16 @@ export class CharactersEffects {
   loadCharacters$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(CharactersActions.loadCharacters),
-      mergeMap((action: {url?: string}) =>
-        this.characterService.getCharacters(action.url).pipe(
-          map((data: PaginatedResult<Character[]>) =>
-            CharactersActions.loadCharactersSuccess({ paginatedResult: data })
-          ),
-          catchError((error) =>
-            of(CharactersActions.loadCharactersFailure({ error }))
+      mergeMap((action: {page?: string}) =>
+        this.characterService.getCharacters(action.page)
+          .pipe(
+            map((data: PaginatedResult<Character[]>) =>
+              CharactersActions.loadCharactersSuccess({ paginatedResult: data }))
+            ,
+            catchError((error) =>
+              of(CharactersActions.loadCharactersFailure({ error }))
+            )
           )
-        )
       )
     );
   });

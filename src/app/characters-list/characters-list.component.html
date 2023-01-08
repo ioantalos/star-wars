@@ -6,7 +6,7 @@
     [character]="character">
   </app-characters-list-item>
   <app-characters-pagination
-    (fetch)="loadCharacters($event)"
+    (setPage)="setPage($event)"
     class="star-wars-container"
   ></app-characters-pagination>
 </ng-container>

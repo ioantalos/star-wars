@@ -27,8 +27,8 @@ export class CharacterService {
     private paginationService: PaginationService
   ) {}
 
-  getCharacters(url?: string): Observable<PaginatedResult<Character[]>> {
-    const apiUrl = url ?? `${baseApiUrl}${CharactersApiSuffix}`;
+  getCharacters(page?: string): Observable<PaginatedResult<Character[]>> {
+    const apiUrl = this.setUrl(page);
 
     return this.http
       .get<CharactersApiResponseBody>(apiUrl, { observe: 'response' })
@@ -40,6 +40,11 @@ export class CharacterService {
           }
         })
       );
+  }
+
+  private setUrl(page?: string): string {
+    const pageString = page ? `?page=${page}&limit=10` : '';
+    return `${baseApiUrl}${CharactersApiSuffix}${pageString}`;
   }
 
   getCharacterDetails(uid: string): Observable<CharacterDetails|null> {
