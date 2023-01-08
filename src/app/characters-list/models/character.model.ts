@@ -1,3 +1,5 @@
+export const CharactersApiSuffix = '/people';
+
 export interface CharactersApiResponseBody {
   results: Character[],
   message: string;

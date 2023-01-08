@@ -1,7 +1,7 @@
 import {createReducer, on} from '@ngrx/store';
 import {EntityState, EntityAdapter, createEntityAdapter} from '@ngrx/entity';
 import * as CharactersActions from './characters.actions';
-import {Character, Pagination} from "../../models/character.model";
+import {Character, Pagination} from "../models/character.model";
 
 export const charactersFeatureKey = 'characters';
 

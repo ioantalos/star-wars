@@ -11,6 +11,8 @@ import {metaReducers, reducers} from "./app/store";
 import {StoreRouterConnectingModule} from "@ngrx/router-store";
 import {EffectsModule} from "@ngrx/effects";
 import {CharactersEffects} from "./app/characters-list/state/characters.effects";
+import {CharacterDetailsEffects} from "./app/character-details/state/character-details.effects";
+import {PlanetEffects} from "./app/planet/state/planet.effects";
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -30,7 +32,11 @@ bootstrapApplication(AppComponent, {
       }),
       !environment.production ? StoreDevtoolsModule.instrument({maxAge:25}) : [],
       StoreRouterConnectingModule.forRoot(),
-      EffectsModule.forRoot([CharactersEffects])
+      EffectsModule.forRoot([
+        CharactersEffects,
+        CharacterDetailsEffects,
+        PlanetEffects
+      ])
       )
   ]
 })

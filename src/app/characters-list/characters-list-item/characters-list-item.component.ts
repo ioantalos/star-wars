@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {Character} from "../../models/character.model";
+import {Character} from "../models/character.model";
 import {RouterModule} from "@angular/router";
 
 @Component({

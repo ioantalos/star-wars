@@ -6,16 +6,22 @@ import {
   MetaReducer
 } from '@ngrx/store';
 import * as fromRouter from '@ngrx/router-store';
-import * as fromCharacter from '../characters-list/state/characters.reducer';
+import * as fromCharacters from '../characters-list/state/characters.reducer';
+import * as fromCharacterDetails from '../character-details/state/character-details.reducer';
+import * as fromPlanet from '../planet/state/planet.reducer';
 
 export interface AppState {
   router: fromRouter.RouterReducerState;
-  [fromCharacter.charactersFeatureKey]: fromCharacter.State;
+  [fromCharacters.charactersFeatureKey]: fromCharacters.State;
+  [fromCharacterDetails.characterDetailsFeatureKey]: fromCharacterDetails.State;
+  [fromPlanet.planetFeatureKey]: fromPlanet.State;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
   router: fromRouter.routerReducer,
-  [fromCharacter.charactersFeatureKey]: fromCharacter.reducer
+  [fromCharacters.charactersFeatureKey]: fromCharacters.reducer,
+  [fromCharacterDetails.characterDetailsFeatureKey]: fromCharacterDetails.reducer,
+  [fromPlanet.planetFeatureKey]: fromPlanet.reducer
 };
 
 export const metaReducers: MetaReducer<AppState>[] = isDevMode() ? [debug] : [];

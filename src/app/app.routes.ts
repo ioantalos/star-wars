@@ -7,9 +7,14 @@ export const routes: Routes = [
     loadComponent: () => import('./characters-list/characters-list.component').then(c => c.CharactersListComponent)
   },
   {
-    path: 'character-details/:id',
+    path: 'character-details/:uid',
     title: 'Star Wars Character Details',
-    loadComponent: () => import('./characters-list/characters-list.component').then(c => c.CharactersListComponent)
+    loadComponent: () => import('./character-details/character-details.component').then(c => c.CharacterDetailsComponent)
+  },
+  {
+    path: 'planet/:uid',
+    title: 'Star Wars Planet Details',
+    loadComponent: () => import('./planet/planet.component').then(c => c.PlanetComponent)
   },
   { path: '**', redirectTo: '/characters', pathMatch: 'full' },
 ];

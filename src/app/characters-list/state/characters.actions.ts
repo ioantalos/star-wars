@@ -1,9 +1,9 @@
 import { createAction, props } from '@ngrx/store';
-import {Character, PaginatedResult} from "../../models/character.model";
+import {Character, PaginatedResult} from "../models/character.model";
 
 export const loadCharacters = createAction(
   '[CharactersList] Load Characters',
-  props<{ url: string }>()
+  props<{ url?: string }>()
 );
 
 export const loadCharactersSuccess = createAction(

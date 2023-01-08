@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import {CharactersApiResponseBody, Pagination} from "../../models/character.model";
+import {CharactersApiResponseBody, CharactersApiSuffix, Pagination} from "../../characters-list/models/character.model";
 import {environment} from "../../../environments/environment";
+
+const {baseApiUrl} = environment;
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +13,10 @@ export class PaginationService {
 
   getPaginationInformation(body: CharactersApiResponseBody | null): Pagination {
     return {
-      first: body?.previous ? `${environment.charactersUrl}?page=1&limit=10`: '',
+      first: body?.previous ? `${baseApiUrl}${CharactersApiSuffix}?page=1&limit=10`: '',
       prev: body?.previous ?? '',
       next: body?.next ?? '',
-      last: body?.next ? `${environment.charactersUrl}?page=${body?.total_pages}&limit=10` : '',
+      last: body?.next ? `${baseApiUrl}${CharactersApiSuffix}?page=${body?.total_pages}&limit=10` : '',
     }
   }
 }

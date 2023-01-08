@@ -1,0 +1,47 @@
+:host {
+  display: grid;
+  place-items: center;
+  color: #222;
+}
+
+.character-details-box {
+  display: flex;
+  flex-direction: column;
+  background-color: lightgrey;
+  padding: 1rem;
+  width: 60%;
+
+
+  h2, h4 {
+    text-align: center;
+  }
+
+  &-properties {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+
+    &-container {
+      display: flex;
+      flex-direction: column;
+
+      span {
+        margin-bottom: .1rem;
+      }
+
+      &:nth-child(2) {
+        align-items: center;
+      }
+
+      &:nth-last-child(1) {
+        align-items: end;
+      }
+    }
+  }
+}
+
+//.items {
+//  display: flex;
+//  align-items: center;
+//  width: 60%;
+//}

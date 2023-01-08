@@ -4,7 +4,7 @@ import {select, Store} from "@ngrx/store";
 import * as CharacterSelector from "../state/characters.selectors";
 import {AppState} from "../../store";
 import {Observable} from "rxjs";
-import {Pagination} from "../../models/character.model";
+import {Pagination} from "../models/character.model";
 
 @Component({
   selector: 'app-characters-pagination',
