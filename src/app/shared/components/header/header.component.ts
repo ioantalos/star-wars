@@ -15,6 +15,7 @@ import {NavigationEnd, Router, RouterEvent, RouterModule} from "@angular/router"
 })
 export class HeaderComponent implements OnInit {
   previousRoute = '';
+  lastCharactersListRoute = '';
   private currentRoute = '';
 
   constructor(
@@ -30,8 +31,9 @@ export class HeaderComponent implements OnInit {
   }
 
   private setRouteDetails(event: RouterEvent): void {
-    debugger;
     this.previousRoute = this.currentRoute;
+    this.lastCharactersListRoute = this.previousRoute.indexOf('/characters') > -1 ?
+      this.previousRoute : this.lastCharactersListRoute;
     this.currentRoute = event.url;
 
     this.ref.markForCheck();

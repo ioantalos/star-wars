@@ -4,14 +4,14 @@
       routerLink="{{previousRoute}}"
       [disabled]="!previousRoute.length"
     >
-      Back
+      Previous page
     </button>
 
     <h1>The Star Wars App</h1>
 
     <button
-      [disabled]="false"
-      routerLink="[{{previousRoute}}}]"
+      routerLink="{{lastCharactersListRoute}}"
+      [disabled]="!lastCharactersListRoute.length"
     >
       Home page
     </button>
