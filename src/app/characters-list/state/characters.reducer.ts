@@ -7,7 +7,7 @@ export const charactersFeatureKey = 'characters';
 
 export interface State extends EntityState<Character> {
   pagination: Pagination | null;
-  error: any;
+  error: unknown;
 }
 
 export const adapter: EntityAdapter<Character> = createEntityAdapter<Character>({

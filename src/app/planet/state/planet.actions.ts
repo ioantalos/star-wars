@@ -13,5 +13,5 @@ export const loadPlanetSuccess = createAction(
 
 export const loadPlanetFailure = createAction(
   '[Planet] Load Planet Failure',
-  props<{ error: any }>()
+  props<{ error: unknown }>()
 );

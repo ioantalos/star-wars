@@ -13,5 +13,5 @@ export const loadCharacterDetailsSuccess = createAction(
 
 export const loadCharacterDetailsFailure = createAction(
   '[CharacterDetails] Load Character Details Failure',
-  props<{ error: any }>()
+  props<{ error: unknown }>()
 );

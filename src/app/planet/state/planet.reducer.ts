@@ -5,7 +5,7 @@ import {Planet} from "../models/planet.model";
 export const planetFeatureKey = 'planet';
 
 export interface State extends Planet {
-  error: any;
+  error: unknown;
 }
 
 export const initialState: State = {

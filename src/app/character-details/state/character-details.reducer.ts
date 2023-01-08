@@ -5,7 +5,7 @@ import {CharacterDetails} from "../models/character-details.model";
 export const characterDetailsFeatureKey = 'characterDetails';
 
 export interface State extends CharacterDetails {
-  error: any;
+  error: unknown;
 }
 
 export const initialState: State = {
