@@ -8,9 +8,6 @@ const {baseApiUrl} = environment;
   providedIn: 'root'
 })
 export class PaginationService {
-
-  constructor() { }
-
   getPaginationInformation(body: CharactersApiResponseBody | null): Pagination {
     return {
       first: body?.previous ? `${baseApiUrl}${CharactersApiSuffix}?page=1&limit=10`: '',

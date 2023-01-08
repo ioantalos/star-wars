@@ -1,8 +1,9 @@
 <div class="header">
   <div class="star-wars-container header-content">
     <button
-      [disabled]="false"
-      (click)="navigateBack()">
+      routerLink="{{previousRoute}}"
+      [disabled]="!previousRoute.length"
+    >
       Back
     </button>
 
@@ -10,8 +11,9 @@
 
     <button
       [disabled]="false"
-      (click)="navigateBack()">
-      Back
+      routerLink="[{{previousRoute}}}]"
+    >
+      Home page
     </button>
   </div>
 </div>

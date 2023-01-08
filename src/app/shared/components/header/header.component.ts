@@ -1,17 +1,40 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {CommonModule } from '@angular/common';
+import {Store} from "@ngrx/store";
+import {filter} from "rxjs";
+import {AppState} from "../../../store";
+import {NavigationEnd, Router, RouterEvent, RouterModule} from "@angular/router";
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
+  previousRoute = '';
+  private currentRoute = '';
 
-  navigateBack(): void {
+  constructor(
+    private store: Store<AppState>,
+    private router: Router,
+    private ref: ChangeDetectorRef
+  ) {}
 
+  ngOnInit(): void {
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(events => this.setRouteDetails(events as RouterEvent))
   }
+
+  private setRouteDetails(event: RouterEvent): void {
+    debugger;
+    this.previousRoute = this.currentRoute;
+    this.currentRoute = event.url;
+
+    this.ref.markForCheck();
+  }
+
 }
