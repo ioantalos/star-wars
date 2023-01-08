@@ -7,14 +7,15 @@ import {ActivatedRoute} from "@angular/router";
 import * as PlanetSelector from "../planet/state/planet.selectors";
 import * as fromPlanetActions from "../planet/state/planet.actions";
 import {Planet} from "./models/planet.model";
+import {StarWarsEntityComponent} from "../shared/components/star-wars-entity/star-wars-entity.component";
 
 @Component({
   selector: 'app-planet',
   standalone: true,
-  imports: [CommonModule],
   templateUrl: './planet.component.html',
   styleUrls: ['./planet.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [CommonModule, StarWarsEntityComponent],
 })
 export class PlanetComponent implements OnInit {
   planet$!: Observable<Planet>;

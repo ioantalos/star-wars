@@ -1,12 +1,15 @@
 <ng-container *ngIf="characterDetails$ | async as characterDetails">
-  <div *ngIf="characterDetails.properties" class="character-details-box">
-    <div class="character-details-box-header">
-      <h2>{{characterDetails.properties.name}}</h2>
+  <app-star-wars-entity
+    *ngIf="characterDetails.properties"
+    class="star-wars-container"
+  >
+    <ng-container header>
+      <h1>{{characterDetails.properties.name}}</h1>
       <hr>
-      <h4>{{characterDetails.description}}.</h4>
-    </div>
+      <h3>{{characterDetails.description}}.</h3>
+    </ng-container>
 
-    <div class="character-details-box-properties">
+    <ng-container content>
       <div class="character-details-box-properties-container">
         <span>Gender: {{characterDetails.properties.gender}}</span>
         <span>Height: {{characterDetails.properties.height}} cm</span>
@@ -29,6 +32,7 @@
           </a>
         </span>
       </div>
-    </div>
-  </div>
+    </ng-container>
+
+  </app-star-wars-entity>
 </ng-container>

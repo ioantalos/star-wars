@@ -1,11 +1,14 @@
 <ng-container *ngIf="characters$ | async as characters; else loading">
   <app-characters-list-item
-    class="items"
+    class="items star-wars-container"
     [class.even]="even"
     *ngFor="let character of characters; let even = even"
     [character]="character">
   </app-characters-list-item>
-  <app-characters-pagination (fetch)="loadCharacters($event)"></app-characters-pagination>
+  <app-characters-pagination
+    (fetch)="loadCharacters($event)"
+    class="star-wars-container"
+  ></app-characters-pagination>
 </ng-container>
 
 <ng-template #loading>

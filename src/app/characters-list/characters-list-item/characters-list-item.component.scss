@@ -3,12 +3,12 @@
   margin-bottom: 1rem;
   box-shadow: 0.25rem 0.25rem 0.75rem rgb(0 0 0 / 0.1);
   cursor: pointer;
-  background: lightgrey;
+  background-color: var(--container-bg-color);
   margin-right: 1rem;
   margin-left: -1rem;
 
   &.even {
-    background: grey;
+    background-color: grey;
     margin-right: -1rem;
     margin-left: 1rem;
   }

@@ -1,0 +1,15 @@
+.star-wars-entity-box {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--container-bg-color);
+  padding: 1rem;
+
+  &-header {
+    text-align: center;
+  }
+
+  &-properties {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

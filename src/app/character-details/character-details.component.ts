@@ -8,6 +8,7 @@ import {AppState} from "../store";
 import {ActivatedRoute, RouterModule} from "@angular/router";
 import * as fromCharacterDetailsActions from "../character-details/state/character-details.actions";
 import {PlanetPipe} from "../shared/pipes/planet.pipe";
+import {StarWarsEntityComponent} from "../shared/components/star-wars-entity/star-wars-entity.component";
 
 @Component({
   selector: 'app-character-details',
@@ -19,6 +20,7 @@ import {PlanetPipe} from "../shared/pipes/planet.pipe";
     CommonModule,
     RouterModule,
     PlanetPipe,
+    StarWarsEntityComponent
   ],
 })
 export class CharacterDetailsComponent implements OnInit {

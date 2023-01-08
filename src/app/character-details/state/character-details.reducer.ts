@@ -18,7 +18,6 @@ export const initialState: State = {
 export const reducer = createReducer(
   initialState,
   on(CharacterDetailsActions.loadCharacterDetailsSuccess, (state, action) => {
-    debugger;
     return  {
       ...state,
       ...action.data,
@@ -27,7 +26,6 @@ export const reducer = createReducer(
   on(
     CharacterDetailsActions.loadCharacterDetailsFailure,
     (state, action) => {
-      debugger;
       return {
         ...state,
         error: action.error,

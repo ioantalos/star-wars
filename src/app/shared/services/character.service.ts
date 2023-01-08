@@ -43,7 +43,6 @@ export class CharacterService {
   }
 
   getCharacterDetails(uid: string): Observable<CharacterDetails|null> {
-    debugger;
     const url = `${baseApiUrl}${CharacterDetailsApiSuffix}${uid}`;
 
     return this.http
