@@ -1,36 +1,38 @@
 import {createReducer, on} from '@ngrx/store';
 import * as PlanetActions from './planet.actions';
-import {Planet} from "../models/planet.model";
+import {AppStateFeatureStatus, InitialAppStateFeature} from "../../store/models/store.model";
 
-export const planetFeatureKey = 'planet';
-
-export interface State extends Planet {
-  error: unknown;
-}
-
-export const initialState: State = {
-  description: "",
-  properties: undefined,
-  uid: "",
-  error: null
-};
+export const initialState = {...InitialAppStateFeature};
 
 export const reducer = createReducer(
   initialState,
+  on(PlanetActions.loadPlanet, (state, action) => {
+    return  {
+      ...state,
+      status: AppStateFeatureStatus.Loading,
+      error: undefined,
+    }}
+  ),
   on(PlanetActions.loadPlanetSuccess, (state, action) => {
     return  {
       ...state,
-      ...action.data,
+      status: AppStateFeatureStatus.Success,
+      error: undefined,
+      activeItem: {...action.data},
+      cachedItems: {
+        ...state.cachedItems,
+        [action.data?.uid as string]: {...action.data}
+      },
     }}
   ),
-  on(
-    PlanetActions.loadPlanetFailure,
+  on(PlanetActions.loadPlanetFailure,
     (state, action) => {
-      return {
-        ...state,
-        error: action.error,
-      };
-    }
+    return {
+      ...state,
+      status: AppStateFeatureStatus.Error,
+      error: action.error,
+      activeItem: undefined,
+    }}
   )
 );
 

@@ -47,18 +47,14 @@ export class CharacterService {
     return `${baseApiUrl}${CharactersApiSuffix}${pageString}`;
   }
 
-  getCharacterDetails(uid: string): Observable<CharacterDetails|null> {
+  getCharacterDetails(uid: string): Observable<CharacterDetails|undefined> {
     const url = `${baseApiUrl}${CharacterDetailsApiSuffix}${uid}`;
 
     return this.http
       .get<CharacterDetailsApiResponse>(url, { observe: 'response' })
       .pipe(
         map((response: HttpResponse<CharacterDetailsApiResponse>) =>
-          response.body?.result ? {
-            uid: response.body.result.uid,
-            description: response.body.result.description,
-            properties: response.body.result?.properties
-          } : null
+          new CharacterDetails(response.body)
         )
       );
   }

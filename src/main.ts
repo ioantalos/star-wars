@@ -24,7 +24,7 @@ bootstrapApplication(AppComponent, {
           strictStateImmutability: true,
           strictActionImmutability: true,
           strictStateSerializability: true,
-          strictActionSerializability: true,
+          strictActionSerializability: false,
           strictActionWithinNgZone: true,
           strictActionTypeUniqueness: true,
         }

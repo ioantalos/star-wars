@@ -1,5 +1,4 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {AppState} from "../store";
 import {select, Store} from "@ngrx/store";
 import * as fromCharactersActions from './state/characters.actions';
 import * as CharacterSelector from './state/characters.selectors';
@@ -9,6 +8,7 @@ import {Character} from "./models/character.model";
 import {CharactersListItemComponent} from "./characters-list-item/characters-list-item.component";
 import {CharactersPaginationComponent} from "./characters-pagination/characters-pagination.component";
 import {ActivatedRoute, Router} from "@angular/router";
+import {AppState} from "../store/models/store.model";
 
 @Component({
   selector: 'app-characters-list',

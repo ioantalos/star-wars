@@ -6,7 +6,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class PlanetPipe implements PipeTransform {
 
-  transform(planetUrl: string): string {
+  transform(planetUrl?: string): string {
+    if (!planetUrl) {
+      return '';
+    }
+
     const planetStr = 'planets/';
     const position = planetUrl.indexOf(planetStr);
 

@@ -8,7 +8,7 @@ export const loadPlanet = createAction(
 
 export const loadPlanetSuccess = createAction(
   '[Planet] Load Planet Success',
-  props<{ data: Planet | null }>() //
+  props<{ data: Planet | undefined }>() //
 );
 
 export const loadPlanetFailure = createAction(

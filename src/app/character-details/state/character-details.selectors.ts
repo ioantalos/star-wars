@@ -1,12 +1,18 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import * as CharacterDetailsReducer from './character-details.reducer';
+import {CharacterDetails} from "../models/character-details.model";
+import {AppStateFeature} from "../../store/models/store.model";
+import {characterDetailsFeatureKey} from "./character-details.constants";
 
-export const selectCharacterDetailsState = createFeatureSelector<CharacterDetailsReducer.State>(
-  CharacterDetailsReducer.characterDetailsFeatureKey
+export const selectCharacterDetailsState = createFeatureSelector<AppStateFeature<CharacterDetails>>(
+  characterDetailsFeatureKey
 );
 
 export const selectCharacterDetails = createSelector(
   selectCharacterDetailsState,
-  (state: CharacterDetailsReducer.State) => state
+  (state: AppStateFeature<CharacterDetails>) => state
 );
 
+export const selectItemFromCache = (uid: string) => createSelector(
+  selectCharacterDetailsState,
+  (state: AppStateFeature<CharacterDetails>) => state.cachedItems?.[uid]
+);

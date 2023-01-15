@@ -2,7 +2,7 @@ import {StarWarsApiResponse, StarWarsEntity, StarWarsProperties} from "../../sha
 
 export const CharacterDetailsApiSuffix = 'people/';
 export type CharacterDetailsApiResponse = StarWarsApiResponse<CharacterDetailsProperties>
-export type CharacterDetails = StarWarsEntity<CharacterDetailsProperties>
+export type CharacterDetailsModel = StarWarsEntity<CharacterDetailsProperties>
 
 interface CharacterDetailsProperties extends StarWarsProperties {
   height: string;
@@ -13,4 +13,16 @@ interface CharacterDetailsProperties extends StarWarsProperties {
   birth_year: string;
   gender: string;
   homeworld: string;
+}
+
+export class CharacterDetails implements CharacterDetailsModel {
+  description: string;
+  properties?: CharacterDetailsProperties;
+  uid: string;
+
+  constructor(data: CharacterDetailsApiResponse | null) {
+    this.uid = data?.result.uid ?? '';
+    this.description = data?.result.description ?? '';
+    this.properties = data?.result?.properties;
+  }
 }

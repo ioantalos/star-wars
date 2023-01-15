@@ -4,11 +4,12 @@ import {select, Store} from "@ngrx/store";
 import * as CharacterDetailsSelector from "../character-details/state/character-details.selectors";
 import {Observable} from "rxjs";
 import {CharacterDetails} from "./models/character-details.model";
-import {AppState} from "../store";
 import {ActivatedRoute, RouterModule} from "@angular/router";
 import * as fromCharacterDetailsActions from "../character-details/state/character-details.actions";
 import {PlanetPipe} from "../shared/pipes/planet.pipe";
 import {StarWarsEntityComponent} from "../shared/components/star-wars-entity/star-wars-entity.component";
+import {AppState, AppStateFeature, AppStateFeatureStatus} from "../store/models/store.model";
+import {LoaderComponent} from "../loader/loader.component";
 
 @Component({
   selector: 'app-character-details',
@@ -20,11 +21,13 @@ import {StarWarsEntityComponent} from "../shared/components/star-wars-entity/sta
     CommonModule,
     RouterModule,
     PlanetPipe,
-    StarWarsEntityComponent
+    StarWarsEntityComponent,
+    LoaderComponent,
   ],
 })
 export class CharacterDetailsComponent implements OnInit {
-  characterDetails$!: Observable<CharacterDetails>;
+  characterDetailsWrapper$!: Observable<AppStateFeature<CharacterDetails>>;
+  statuses = AppStateFeatureStatus;
 
   constructor(
     private store: Store<AppState>,
@@ -32,7 +35,7 @@ export class CharacterDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.characterDetails$ = this.store.pipe(select(CharacterDetailsSelector.selectCharacterDetails));
+    this.characterDetailsWrapper$ = this.store.pipe(select(CharacterDetailsSelector.selectCharacterDetails));
 
     this.route.params
       .subscribe(params => {

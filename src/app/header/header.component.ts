@@ -2,8 +2,8 @@ import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@an
 import {CommonModule } from '@angular/common';
 import {Store} from "@ngrx/store";
 import {filter} from "rxjs";
-import {AppState} from "../../../store";
 import {NavigationEnd, Router, RouterEvent, RouterModule} from "@angular/router";
+import {AppState} from "../store/models/store.model";
 
 @Component({
   selector: 'app-header',

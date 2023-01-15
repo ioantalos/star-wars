@@ -2,9 +2,9 @@ import {ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output} from '
 import { CommonModule } from '@angular/common';
 import {select, Store} from "@ngrx/store";
 import * as CharacterSelector from "../state/characters.selectors";
-import {AppState} from "../../store";
 import {Observable} from "rxjs";
 import {Pagination} from "../models/character.model";
+import {AppState} from "../../store/models/store.model";
 
 @Component({
   selector: 'app-characters-pagination',

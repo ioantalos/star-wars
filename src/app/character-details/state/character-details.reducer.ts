@@ -1,26 +1,26 @@
 import {createReducer, on} from '@ngrx/store';
 import * as CharacterDetailsActions from './character-details.actions';
-import {CharacterDetails} from "../models/character-details.model";
-
-export const characterDetailsFeatureKey = 'characterDetails';
-
-export interface State extends CharacterDetails {
-  error: unknown;
-}
-
-export const initialState: State = {
-  description: "",
-  properties: undefined,
-  uid: "",
-  error: null
-};
+import {AppStateFeatureStatus, InitialAppStateFeature} from "../../store/models/store.model";
 
 export const reducer = createReducer(
-  initialState,
+  InitialAppStateFeature,
+  on(CharacterDetailsActions.loadCharacterDetails, (state, action) => {
+    return  {
+      ...state,
+      status: AppStateFeatureStatus.Loading,
+      error: undefined
+    }}
+  ),
   on(CharacterDetailsActions.loadCharacterDetailsSuccess, (state, action) => {
     return  {
       ...state,
-      ...action.data,
+      status: AppStateFeatureStatus.Success,
+      error: undefined,
+      activeItem: {...action.data},
+      cachedItems: {
+        ...state.cachedItems,
+        [action.data?.uid as string]: {...action.data}
+      }
     }}
   ),
   on(
@@ -28,9 +28,10 @@ export const reducer = createReducer(
     (state, action) => {
       return {
         ...state,
+        status: AppStateFeatureStatus.Error,
         error: action.error,
+        activeItem: undefined
       };
     }
   )
 );
-

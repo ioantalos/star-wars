@@ -8,7 +8,7 @@ export const loadCharacterDetails = createAction(
 
 export const loadCharacterDetailsSuccess = createAction(
   '[CharacterDetails] Load Character Details Success',
-  props<{ data: CharacterDetails | null }>()
+  props<{ data: CharacterDetails | undefined }>()
 );
 
 export const loadCharacterDetailsFailure = createAction(

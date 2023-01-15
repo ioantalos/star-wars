@@ -12,20 +12,23 @@ const {baseApiUrl} = environment;
 })
 export class PlanetService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+  ) { }
 
-  getPlanet(uid: string): Observable<Planet|null> {
+  getPlanet(uid: string): Observable<Planet | undefined> {
     const url = `${baseApiUrl}${PlanetApiSuffix}${uid}`;
 
     return this.http
       .get<PlanetApiResponse>(url, { observe: 'response' })
       .pipe(
         map((response: HttpResponse<PlanetApiResponse>) =>
-          response.body?.result ? {
-            uid: response.body.result.uid,
-            description: response.body.result.description,
-            properties: response.body.result?.properties
-          } : null
+          new Planet(response.body)
+          // response.body?.result ? {
+          //   uid: response.body.result.uid,
+          //   description: response.body.result.description,
+          //   properties: response.body.result?.properties
+          // } : undefined
         )
       )
   }

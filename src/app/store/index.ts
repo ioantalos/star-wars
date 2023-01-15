@@ -5,20 +5,17 @@ import {
   ActionReducerMap,
   MetaReducer
 } from '@ngrx/store';
+import {AppState} from "./models/store.model";
 import * as fromCharacters from '../characters-list/state/characters.reducer';
 import * as fromCharacterDetails from '../character-details/state/character-details.reducer';
 import * as fromPlanet from '../planet/state/planet.reducer';
-
-export interface AppState {
-  [fromCharacters.charactersFeatureKey]: fromCharacters.State;
-  [fromCharacterDetails.characterDetailsFeatureKey]: fromCharacterDetails.State;
-  [fromPlanet.planetFeatureKey]: fromPlanet.State;
-}
+import {planetFeatureKey} from "../planet/state/planet.constants";
+import {characterDetailsFeatureKey} from "../character-details/state/character-details.constants";
 
 export const reducers: ActionReducerMap<AppState> = {
   [fromCharacters.charactersFeatureKey]: fromCharacters.reducer,
-  [fromCharacterDetails.characterDetailsFeatureKey]: fromCharacterDetails.reducer,
-  [fromPlanet.planetFeatureKey]: fromPlanet.reducer,
+  [characterDetailsFeatureKey]: fromCharacterDetails.reducer,
+  [planetFeatureKey]: fromPlanet.reducer,
 };
 
 export const metaReducers: MetaReducer<AppState>[] = isDevMode() ? [debug] : [];
